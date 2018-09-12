@@ -1,0 +1,23 @@
+{
+  "name": "loldoran",
+  "version": "1.0.0",
+  "description": "LoL tool for summoners.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsimnujhawj/lolDoran.git"
+  },
+  "author": "Tsimnuj Hawj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsimnujhawj/lolDoran/issues"
+  },
+  "homepage": "https://github.com/tsimnujhawj/lolDoran#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
