@@ -1,7 +1,7 @@
 const express = require("express");
 const pageRoutes = require("./routes/pageRoutes")
 const reqRoutes = require("./routes/reqRoutes")
-
+const hbs = require("express-handlebars")
 
 // setup express
 const app = express();
@@ -11,6 +11,15 @@ app.use(express.static("public"));
 app.use(pageRoutes);
 // setup api routes for express
 app.use(reqRoutes);
+
+// handlebars setup
+app.engine( 'handlebars', hbs( { 
+    extname: 'handlebars', 
+    defaultLayout: 'main', 
+    layoutsDir: __dirname + '/views/layouts/',
+    partialsDir: __dirname + '/views/partials/'
+}));
+app.set('view engine', 'handlebars');
 
 // start listening at 3000
 const PORT = 3000;
