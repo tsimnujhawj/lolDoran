@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-// TODO: setup home page hbs view
-router.get("/", (req, res)=> res.render("index"));
+const playerName = "TigerBang"; // for testing purposes
 
-router.get("/home", (req, res)=> res.send("Hello Home!"));
+// TODO: setup home page hbs view
+router.get("/", (req, res)=> res.render("index", {playerName}));
+
+router.get("/home", (req, res)=> res.render("home"));
 
 module.exports = router;
