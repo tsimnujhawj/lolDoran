@@ -2,6 +2,8 @@ const express = require("express");
 const pageRoutes = require("./routes/pageRoutes")
 const reqRoutes = require("./routes/reqRoutes")
 const hbs = require("express-handlebars")
+const request = require("request")
+const bodyParser = require("body-parser");
 
 // setup express
 const app = express();
@@ -11,6 +13,9 @@ app.use(express.static("public"));
 app.use(pageRoutes);
 // setup api routes for express
 app.use(reqRoutes);
+
+// setup body-parser
+app.use(bodyParser.json());
 
 // handlebars setup
 app.engine( 'handlebars', hbs( { 

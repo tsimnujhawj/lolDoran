@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/tsimnujhawj/lolDoran#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "request": "^2.88.0"
   }
 }
