@@ -1,6 +1,6 @@
 const express = require("express");
-const pageRoutes = require("./routes/pageRoutes")
-const reqRoutes = require("./routes/reqRoutes")
+// const pageRoutes = require("./routes/pageRoutes")
+// const reqRoutes = require("./routes/reqRoutes")
 const hbs = require("express-handlebars")
 const request = require("request")
 const bodyParser = require("body-parser");
@@ -9,12 +9,9 @@ const bodyParser = require("body-parser");
 const app = express();
 // setup public folder for the app
 app.use(express.static("public"));
-// setup page routes for express
-app.use(pageRoutes);
-// setup api routes for express
-app.use(reqRoutes);
 
 // setup body-parser
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 // handlebars setup
@@ -26,6 +23,12 @@ app.engine( 'handlebars', hbs( {
 }));
 app.set('view engine', 'handlebars');
 
+// routes
+require("./routes/pageRoutes")(app);
+require("./routes/reqRoutes")(app);
+
 // start listening at 3000
 const PORT = 3000;
 app.listen(PORT, ()=> console.log(`App is running on port ${PORT}`))
+
+module.exports = app;
