@@ -3,12 +3,11 @@
 
 module.exports = (app)=>{
     app.post("/search", (req, res)=>{
-        console.log(req.body)
-        res.render("index", (req)=>{
-            console.log(req)
-            // return playerName = document.getElementById("summonerEntry").value;
-        },
-        {playerName: "Tigerbang"})
+        let summonerName = req.body.summonerName;
+        console.log(summonerName);
+        // make http request to riot api and scrap probuilds for champ
+        
+        res.render("index", {playerName: summonerName})
     });
     
     app.get("/homey", (req, res)=> res.send("Hello Home!"));
