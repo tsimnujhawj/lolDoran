@@ -12,14 +12,13 @@
     width : 100px;
 }
 
-#summonerEntry {
+#champEntry {
     width: 200px;
     margin: 0 auto;
 }
 
-.summoner-header {
+.champ-header {
     margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 30px;
+    text-decoration: underline;
     width: 40%;
 }

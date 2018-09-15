@@ -1,9 +1,8 @@
 const express = require("express");
-// const pageRoutes = require("./routes/pageRoutes")
-// const reqRoutes = require("./routes/reqRoutes")
 const hbs = require("express-handlebars")
-const request = require("request")
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
 
 // setup express
 const app = express();
