@@ -1,5 +1,6 @@
 const request = require("request")
 const cheerio = require("cheerio")
+const db = require("../models")
 
 // write items
 // res.render(`/champion`, {itemName: itemName})
@@ -16,12 +17,18 @@ module.exports = (app)=>{
                 if (err) throw err
                 const $ = cheerio.load(html);
                 const popSection = $(".popular-section");
-                result.popSection = popSection
-                db.doransbook.create(result).then((data)=>{
-                    console.log(data);
+                
+                // TODO: Finish this insert into MongoDB
+                db.Champ.insert({
+                    name: champName,
+                    topItems: {
+                        name: "item", // item name
+                        imgLink: "link",
+                        percent: "percent"
+                    }
                 })
             })
-            console.log(result.popSection);
+            // console.log(result.popSection);
     }
 );
     
