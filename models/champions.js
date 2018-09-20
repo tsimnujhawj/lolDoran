@@ -9,7 +9,7 @@ const ChampionSchema = new Schema({
         item: {
             name: String,
             imgLink: String,
-            percent: Number
+            percent: String
         }
     }
 })

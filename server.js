@@ -13,6 +13,9 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
+// mongodb/mongoose setup
+mongoose.connect("mongodb://localhost:27017/doransbook")
+
 // handlebars setup
 app.engine( 'handlebars', hbs( { 
     extname: 'handlebars', 
