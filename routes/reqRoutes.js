@@ -16,28 +16,24 @@ module.exports = (app)=>{
     },
     (req, res)=>{
         const champName = req.body.champName
-        let result = {};
             rp(`https://www.probuilds.net/champions/details/${champName}`, (err, res, html)=>{
                 if (err) throw err
-                const $ = cheerio.load(html);
-                const popSection = $(".popular-section").html();
-            // the name of items and spells
-            $(".bigData .item-name").each((index, el)=>{
-                const itemName = $(el).text();
-            })
-            // // the percent of each item/spells
-            $(".bigData .green").each((index, el)=>{
-                const popPercent = $(el).text();
-            })
-            // // the image of each item/spells
-            $(".bigData .item").each((index, el)=>{
-                const itemImg = $(el).children("img").attr("src");
-            })
         }).then((data)=>{
-            console.log(data);
             const $ = cheerio.load(data);
-            const textData = $(".popular-section").html();
-            res.render("index", {stuff: textData});
+            const displayData = $(".popular-section").html();
+            const popPercent = $(".bigData .green").each((index, el)=>{$(el).html();})
+            const imgLink = $(".bigData .item").each((index, el)=> {$(el).children("img").attr("src")});
+            const itemName = $(".bigData .item-name").each((index, el)=>{$(el).html();})
+            const champImg = $(".champion-image").children("img");
+            console.log("ITEM IMG: ---------- " + imgLink);
+            console.log("PERCENT: ---------- " + popPercent)
+            console.log("ITEM NAME: ---------- " + itemName)
+            res.render("champion", {
+                stuff: displayData,
+                champName: champName,
+                champImg: champImg,
+                imgLink: imgLink
+            });
         })
     }
 );

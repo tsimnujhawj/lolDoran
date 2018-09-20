@@ -22,3 +22,18 @@
     text-decoration: underline;
     width: 40%;
 }
+
+.bigData {
+    margin: 10px;
+    border: 2px solid black;
+}
+
+/* .champ-img {
+    width: 200px;
+    height: 200px;
+} */
+
+img {
+    width: 200px;
+    height: 200px;
+}

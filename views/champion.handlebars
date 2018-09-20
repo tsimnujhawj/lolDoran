@@ -1,16 +1,23 @@
 <div class="champ-header">
-    <h3>Item: {{itemName}}</h3>
+    <h3>Champion: {{champName}}</h3>
+    <div class="champ-img">
+        {{{champImg}}}
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
         <div class="popItems">
-            {{!-- need a list --}}
+            {{{stuff}}}
         </div>
     </div>
 
     <div class="col-md-6">
-
+        <div class="popItems">
+            {{!-- {{#each imgLink}} --}}
+            {{{imgLink}}}
+            {{!-- {{/each}} --}}
+        </div>
     </div>
 
 </div>
