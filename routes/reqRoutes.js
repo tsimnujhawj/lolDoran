@@ -1,70 +1,54 @@
 "use strict";
-
-const request = require("request")
 const cheerio = require("cheerio")
-const db = require("../models/champions")
 const rp = require('request-promise');
-
-// write items
-// res.render(`/champion`, {itemName: itemName})
 
 
 module.exports = (app)=>{
     app.post("/", (req, res, next)=>{
-        console.log(req.body.champName)
         return next()
     },
     (req, res)=>{
+        // change champion name into uppercase for uniformity
         const champName = req.body.champName.toUpperCase()
+            // request promise to probuilds.net, scraping
             rp(`https://www.probuilds.net/champions/details/${champName}`, (err, res, html)=>{
                 if (err) throw err
         }).then((data)=>{
             const $ = cheerio.load(data);
-            const displayData = $(".popular-section").html();
-            const popPercent = $(".bigData .green").each((index, el)=>{$(el).html();})
-
+            // build object for scraper to use
             let champ = {
                 name: champName,
                 items: []
             }
             let itemArr = champ.items
+                // grab info from probuilds.net
+                $(".bigData").each((index, el)=> {
+                    let itemUrl = $(el).children(".item").children("img").attr("src");
+                    let itemName = $(el).children(".item-name").text();
+                    let popularity = $(el).children(".popularity").text();
+                    // insert info into an object for the champ.items arr
+                    let obj = {
+                        name: itemName,
+                        url: itemUrl,
+                        pop: popularity
+                    }
+                    // insert object into champ.items array for each item iteration
+                    itemArr[index] = obj
+                });
 
-            $(".bigData").each((index, el)=> {
-                let itemUrl = $(el).children(".item").children("img").attr("src");
-                let itemName = $(el).children(".item-name").text();
-                let popularity = $(el).children(".popularity").text();
-                console.log(itemUrl);
-                let obj = {
-                    name: itemName,
-                    url: itemUrl,
-                    pop: popularity
-                }
-                itemArr[index] = obj
-            });
-            console.log("---------------------------FINAL: " + JSON.stringify(champ.items))
-            const champImg = $(".champion-image").children("img");
-            res.render("champion", {
-                itemName: champ.items,
-                champName: champName,
-                champImg: champImg,
-            });
+                    // grab mongodb to display onto page
+                    const forum = "sample text";
+
+                    // render the scraped info to hbs
+                    const champImg = $(".champion-image").children("img");
+                    res.render("champion", {
+                        itemName: champ.items,
+                        champName: champName,
+                        champImg: champImg,
+                        forum: forum
+                    });
         })
     }
 );
-    
 
-    app.get("/homey", (req, res)=> res.send("Hello Home!"));
-};
-
-            // the name of items and spells
-            // $(".bigData .item-name").each((index, el)=>{
-            //     const itemName = $(el).text();
-            // })
-            // // the percent of each item/spells
-            // $(".bigData .green").each((index, el)=>{
-            //     const popPercent = $(el).text();
-            // })
-            // // the image of each item/spells
-            // $(".bigData .item").each((index, el)=>{
-            //     const itemImg = $(el).children("img").attr("src");
-            // })
+}; // CLOSING BRACE

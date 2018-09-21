@@ -1,9 +1,9 @@
-const request = require("request")
 const cheerio = require("cheerio")
+const rp = require('request-promise');
 
 module.exports = (app)=>{
-// const playerName = "TigerBang"; // for testing purposes
 
+// build 
 app.get("/", (req, res)=> res.render("index", {champName: "SELECT A CHAMP"}));
 
 };
