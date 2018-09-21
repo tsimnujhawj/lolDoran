@@ -1,5 +1,5 @@
 const cheerio = require("cheerio")
-const rp = require('request-promise');
+const rp = require("request-promise");
 
 module.exports = (app)=>{
 

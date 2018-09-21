@@ -14,7 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 // mongodb/mongoose setup
-mongoose.connect("mongodb://localhost:27017/doransbook")
+mongoose.connect("mongodb://localhost:27017/loldoranforum");
+let mongodbCon = mongoose.connection;
+mongodbCon.on("connected", ()=> console.log("MongoDB connected"));
 
 // handlebars setup
 app.engine( 'handlebars', hbs( { 

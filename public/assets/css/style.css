@@ -7,6 +7,25 @@
     margin: 0 auto;
 }
 
+.select-hidden {
+    display: none;
+}
+
+.comment-box {
+    margin-top: 80px;
+}
+
+#comment {
+    text-align: left;
+    width: 680px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.comment-title {
+    margin: 0 auto;
+}
+
 .btn {
     margin: 10px;
     width : 100px;
@@ -15,6 +34,11 @@
 #champEntry {
     width: 200px;
     margin: 0 auto;
+}
+
+#poster {
+    width: 200px;
+    margin: 10px auto;
 }
 
 .champ-header {
@@ -63,4 +87,26 @@ ul {
 
 .container {
     margin: 0 auto;
+    text-align: center;
+    width: 960px;
+    max-width: 100%;
 }
+
+/* Media Query */
+/*
+@media only screen and (max-width: 600px) {
+    ul {
+        /* -moz-column-count: 2;
+        -moz-column-gap: 15px;
+        -webkit-column-count: 2;
+        -webkit-column-gap: 15px;
+        column-count: 2;
+        column-gap: 15px; */
+        /* display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: wrap column;
+        flex-flow: wrap column;
+        max-height: 680px;
+    }
+} */
