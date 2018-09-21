@@ -1,28 +1,22 @@
 <div class="champ-header">
-    <h3>Champion: {{champName}}</h3>
+    <h1>{{champName}}</h1>
     <div class="champ-img">
         {{{champImg}}}
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="popItems">
-            {{#each itemName}}
-                {{{this}}}
-            {{/each}}
-            {{#each imgLink}}
-                <img class="item" src="{{this}}"/>
-            {{/each}}
-        </div>
-    </div>
+<div class="popItems">
+    <ul>
+    {{#each itemName}}
+        <li>
+        <h5>{{this.name}}</h5>
+        <h6>Popularity: {{this.pop}}</h6>
+        <img class="item" alt="{{this.name}}" src="{{this.url}}"/>
+        </li>
+    {{/each}}
+    </ul>
+</div>
 
-    <div class="col-md-6">
-        <div class="popItems">
-            {{!-- {{#each imgLink}}
-                <img class="item" src="{{this}}"/>
-            {{/each}} --}}
-        </div>
-    </div>
+<div class="forum">
 
 </div>

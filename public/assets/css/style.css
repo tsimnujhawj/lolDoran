@@ -18,22 +18,49 @@
 }
 
 .champ-header {
-    margin: 0 auto;
-    text-decoration: underline;
-    width: 40%;
-}
-
-.bigData {
-    margin: 10px;
-    border: 2px solid black;
+    margin: 20px auto;
+    padding: 10px;
+    width: 100%;
+    background-color: #3F4045;
+    color: #FFF;
+    border-radius: 5px;
 }
 
 .champ-img {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    margin: 15px auto;
+    border: 3px solid #355691;
 }
 
 .item {
     width: 64px;
     height: 64px;
+}
+
+li {
+    border: 2px solid black;
+    padding: 5px;
+    margin: 5px auto;
+    width: 210px;
+    border-radius: 5px;
+}
+
+ul {
+    /* -moz-column-count: 2;
+    -moz-column-gap: 15px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 15px;
+    column-count: 2;
+    column-gap: 15px; */
+    display: -ms-flexbox;           /* IE 10 */
+    display: -webkit-flex;          /* Safari 6.1+. iOS 7.1+ */
+    display: flex;
+    -webkit-flex-flow: wrap column; /* Safari 6.1+ */
+    flex-flow: wrap column;
+    max-height: 680px;              /* Limit height to whatever you need */
+}
+
+.container {
+    margin: 0 auto;
 }

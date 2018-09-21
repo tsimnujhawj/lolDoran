@@ -27,31 +27,26 @@ module.exports = (app)=>{
                 name: champName,
                 items: []
             }
-
             let itemArr = champ.items
-            console.log(itemArr)
-            const imgLink = $(".tooltip").each((index, el)=> {
-                let itemUrl = $(el).children("img").attr("src")
+
+            $(".bigData").each((index, el)=> {
+                let itemUrl = $(el).children(".item").children("img").attr("src");
+                let itemName = $(el).children(".item-name").text();
+                let popularity = $(el).children(".popularity").text();
+                console.log(itemUrl);
                 let obj = {
-                    url: itemUrl
+                    name: itemName,
+                    url: itemUrl,
+                    pop: popularity
                 }
                 itemArr[index] = obj
             });
-            const itemName = $(".bigData .item-name").each((index, el)=>{
-                let itemN = $(el).html();
-                let obj = {
-                    name: itemN,
-                    // url: itemUrl
-                }
-                itemArr[index] = obj
-            })
-            console.log("---------------------------FINAL: " + JSON.stringify(champ))
+            console.log("---------------------------FINAL: " + JSON.stringify(champ.items))
             const champImg = $(".champion-image").children("img");
             res.render("champion", {
-                itemName: champ.items.name,
+                itemName: champ.items,
                 champName: champName,
                 champImg: champImg,
-                imgLink: champ.items.url
             });
         })
     }
