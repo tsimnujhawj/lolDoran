@@ -15,24 +15,43 @@ module.exports = (app)=>{
         return next()
     },
     (req, res)=>{
-        const champName = req.body.champName
+        const champName = req.body.champName.toUpperCase()
             rp(`https://www.probuilds.net/champions/details/${champName}`, (err, res, html)=>{
                 if (err) throw err
         }).then((data)=>{
             const $ = cheerio.load(data);
             const displayData = $(".popular-section").html();
             const popPercent = $(".bigData .green").each((index, el)=>{$(el).html();})
-            const imgLink = $(".bigData .item").each((index, el)=> {$(el).children("img").attr("src")});
-            const itemName = $(".bigData .item-name").each((index, el)=>{$(el).html();})
+
+            let champ = {
+                name: champName,
+                items: []
+            }
+
+            let itemArr = champ.items
+            console.log(itemArr)
+            const imgLink = $(".tooltip").each((index, el)=> {
+                let itemUrl = $(el).children("img").attr("src")
+                let obj = {
+                    url: itemUrl
+                }
+                itemArr[index] = obj
+            });
+            const itemName = $(".bigData .item-name").each((index, el)=>{
+                let itemN = $(el).html();
+                let obj = {
+                    name: itemN,
+                    // url: itemUrl
+                }
+                itemArr[index] = obj
+            })
+            console.log("---------------------------FINAL: " + JSON.stringify(champ))
             const champImg = $(".champion-image").children("img");
-            console.log("ITEM IMG: ---------- " + imgLink);
-            console.log("PERCENT: ---------- " + popPercent)
-            console.log("ITEM NAME: ---------- " + itemName)
             res.render("champion", {
-                stuff: displayData,
+                itemName: champ.items.name,
                 champName: champName,
                 champImg: champImg,
-                imgLink: imgLink
+                imgLink: champ.items.url
             });
         })
     }
