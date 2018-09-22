@@ -35,6 +35,6 @@ require("./routes/reqRoutes")(app);
 
 // start listening at 3000
 const PORT = 3000;
-app.listen(PORT, ()=> console.log(`App is running on port ${PORT}`))
+app.listen(process.env.PORT || PORT, ()=> console.log(`App is running on port ${PORT}`))
 
 module.exports = app;
