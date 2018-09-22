@@ -72,7 +72,7 @@ module.exports = (app)=>{
                                 time: newDate
                             }
                             postArr.push(obj)
-                            console.log(postArr)
+                            console.log(obj)
                         })
                     })
                     // render the scraped info to hbs
