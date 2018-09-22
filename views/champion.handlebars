@@ -6,7 +6,7 @@
 </div>
 
 <div class="popItems">
-    <ul>
+    <ul class="item-ul">
     {{#each itemName}}
         <li>
         <h5>{{this.name}}</h5>
@@ -18,17 +18,25 @@
 </div>
 
 <div class="form-group comment-box">
-<form action="/post" method="POST">
+<form action="/post" method="POST" id="postForm">
 <select name="champion" class="select-hidden">
   <option value="{{champName}}"></option>
 </select>
   <label for="comment" class="comment-title"><h3>Comment</h3></label>
     <input type="text" class="form-control" id="poster" placeholder="Enter Your Name" name="name">
   <textarea class="form-control" id="comment" name="post"></textarea>
-  <button type="submit" class="btn btn-success col-4">Submit</button>
+  <button type="submit" class="btn btn-success col-4" onclick="clearForm()">Submit</button>
 </form>
 </div>
 
 <div class="forum">
-    {{forum}}
+    <ul class="forum-ul">
+    {{#each forum}}
+    <div class="forum-div">
+        <li id="post-name"><h5>{{this.name}}</h5></li>
+        <span id="time-li">Posted: {{this.time}}</span>
+        <li id="post-div">{{this.post}}</li>
+    </div>
+    {{/each}}
+    </ul>
 </div>

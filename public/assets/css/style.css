@@ -22,6 +22,14 @@
     margin: 0 auto;
 }
 
+.sample-section {
+    margin: 20px auto;
+}
+
+.select-sample {
+    width: 100px;
+}
+
 .comment-title {
     margin: 0 auto;
 }
@@ -62,7 +70,7 @@
     height: 64px;
 }
 
-li {
+.item-ul li {
     border: 2px solid black;
     padding: 5px;
     margin: 5px auto;
@@ -70,7 +78,7 @@ li {
     border-radius: 5px;
 }
 
-ul {
+.item-ul {
     /* -moz-column-count: 2;
     -moz-column-gap: 15px;
     -webkit-column-count: 2;
@@ -85,12 +93,40 @@ ul {
     max-height: 680px;              /* Limit height to whatever you need */
 }
 
+.forum-div {
+    margin: 15px auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 480px;
+}
+
+#time-li {
+    font-size: 9px;
+    text-align: left;
+}
+
+#post-name {
+    background-color: #355691;
+    color: #fff;
+    padding: 10px;
+}
+
+#post-div {
+    padding: 15px;
+    text-align: left;
+}
+
+.home {
+
+}
+
 .container {
     margin: 0 auto;
     text-align: center;
     width: 960px;
     max-width: 100%;
 }
+
 
 /* Media Query */
 /*

@@ -7,5 +7,18 @@
       <input type="text" class="form-control" id="champEntry" placeholder="Enter Champion Name" name="champName">
       </div>
       <button type="submit" class="btn btn-primary col-4">Search</button>
+        <div>
+          <a href="/" class="home">Go Home</a>
+        </div>
     </form>
+    <div class="sample-section">
+      <form action="/" method="POST">
+      <select name="champName" class="select-sample">
+        {{#each champArr}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+      </select>
+      <button type="submit" class="btn btn-primary col-4">Submit</button>
+      </form>
+    </div>
 </div>
