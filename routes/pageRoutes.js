@@ -27,8 +27,9 @@ app.get("/", (req, res)=> {
 
 app.get("/posted", (req, res)=> {
     res.render("index", {
-        champName: "POSTED SUCCESSFULLY"
-    }
+        champName: "POSTED SUCCESSFULLY",
+        champArr: champArr
+        }
     )
         // res.redirect("/")
 })

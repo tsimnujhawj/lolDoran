@@ -63,7 +63,8 @@ module.exports = (app)=>{
                         itemName: champ.items,
                         champName: champName,
                         champImg: champImg,
-                        forum: champ.post
+                        forum: champ.post,
+                        champArr: champArr
                     });
         })
     }

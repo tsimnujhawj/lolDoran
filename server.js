@@ -14,7 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 // mongodb/mongoose setup
-mongoose.connect("mongodb://localhost:27017/loldoranforum");
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/loldoranforum";
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 let mongodbCon = mongoose.connection;
 mongodbCon.on("connected", ()=> console.log("MongoDB connected"));
 
